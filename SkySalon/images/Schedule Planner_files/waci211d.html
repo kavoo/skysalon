@@ -1,0 +1,66 @@
+
+<!-- saved from url=(0053)https://webapps.lwtech.edu/wts/schdplan/waci211d.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>BUTTONS</title>
+
+<script>
+
+   function changeViewer(viewName){
+   var quarter=""+parent.yrq
+     if (viewName=="View Course List") {
+       if (top.viewer=="waci211b"){     // time grid
+         top.viewer="courseList";
+         top.saveTimeGrid=true
+         document.buttons.viewerControl.value="View Time Grid";
+//*******************CODE FOR COURSE OFFERINGS ON THE SERVER********************
+
+      if(quarter.charAt(3) == '1'){parent.waci211b.location="courseSum.html";}
+      if(quarter.charAt(3) == '2'){parent.waci211b.location="courseFal.html";}
+      if(quarter.charAt(3) == '3'){parent.waci211b.location="courseWin.html";}
+      if(quarter.charAt(3) == '4'){parent.waci211b.location="courseSpr.html";}
+
+//******************course offerings on the 3000 *************************
+
+//      document.offer.qtr.value=quarter.charAt(3);
+//      document.forms[0].submit();
+         }
+  }else{
+
+   if (top.viewer=="courseList"){
+      top.viewer="waci210b";
+      parent.waci211b.location="waci211b.html"
+      document.buttons.viewerControl.value="View Course List";
+  }
+ }
+}
+
+function help() {  //popup common help display
+   helpWindow=window.open("waci210h.html","help_Window","status=yes,resizable=yes,width=500,height=400,scrollbars=yes");
+   helpWindow.document.close();
+}
+
+function labelButton() {
+   if (top.viewer == "waci211b"){
+      document.buttons.viewerControl.value="View Course List";
+   }else{
+      document.buttons.viewerControl.value="View Time Grid";
+   }
+}
+
+</script>
+<link href="./wts.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="typeB" onload="labelButton()">
+<center> 
+<form name="buttons">
+   <input type="button" name="viewerControl" value="View Time Grid" onclick="changeViewer(this.value)">
+   <input type="button" value="Return to Main Menu" onclick="top.location.href=&#39;https://webapps.lwtech.edu/wts/student/index.html&#39;">
+   <input type="button" value="Help" onclick="help()">
+</form>
+
+</center>
+
+
+
+</body></html>

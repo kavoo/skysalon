@@ -1,0 +1,58 @@
+/* CSS Document */
+
+body.typeA { /* dark tan - main content   */
+	 background-color:#E5C78A;
+	 padding-left: 3em;
+}
+body.typeB { /*  gold - footer frame */
+	background-color: #CC9933;
+	padding-top: 4px;
+	margin:0;
+}
+body.typeC { /* cool green - popup */
+	background-color: #E0EBEF;
+}
+body.typeD { /* white - left nav with logo */
+	background: #fff url(images/logo125.gif) no-repeat 10px 20px;
+	padding: 70px 10px 10px 10px;
+	margin:0;
+}
+
+td, p, li, th, h1, h2, h3, h4, h5, h6 {
+	font-family:Arial, Helvetica, sans-serif; 
+	}
+td, p, li, th {font-size:12px;}
+h1 {font-size:22px;}
+h2 {font-size:18px;}
+h3 {font-size:14px;}
+
+.tocTable {
+	background-color: #fff;
+	border-collapse: collapse;
+}
+.importantNote {
+	color:  #900;
+}
+
+.singleClick {
+	color:#060;
+}
+.messageOK {
+	color: #009900;
+}
+.messageProblem {
+	color: #CC0000;
+}
+font {font-size: 12px;}
+
+table.timegrid {
+	background-color: #999966
+}
+table.timegrid td {
+	padding:0px;
+}
+ol.schedulePlannerInputInstructions {}
+.schedulePlannerInputInstructions li {
+	margin-top: .5em;
+	margin-bottom: .5em;
+}

@@ -1,0 +1,198 @@
+
+<!-- saved from url=(0053)https://webapps.lwtech.edu/wts/schdplan/waci211a.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Select Courses</title>
+<script language="JavaScript">
+var jsVer="1.0";
+</script>
+<script language="JavaScript1.1">
+var jsVer="1.1";
+</script>
+<script language="JavaScript">
+function getSID() {  //get sid for prerequsite checking
+   document.select.preReq.checked=false;
+   sidWindow=window.open("waci211c.html","sid_Window","status=yes,resizable=yes,width=300,height=250");
+   sidWindow.document.close();
+}
+
+function resetSID(){
+   document.select.sid.value="*";
+   if (parent.reqcheck=="Y"){
+      document.select.preReq.checked=false;
+   }
+}
+
+function submitCourses() {      //called by submit button
+   if (document.select.c001.value=="" && document.select.c002.value==""&&document.select.c003.value==""&&
+       document.select.c004.value==""&& document.select.c005.value==""){
+      alert("You must select a minimum of one course.");
+      return ;
+   }
+
+   document.select.yrq.value=parent.yrq;
+   document.select.loc.value=parent.loc;
+   if (top.viewer=='courseList') {                      // if Course List is in viewer frame
+      document.select.timeFlag.value=top.reserveFlags;  //use flags saved when form was unloaded
+   } else {
+      flagReserve();
+   }
+   top.saveTimeGrid=true;
+   document.select.submit();
+}
+
+function flagReserve() {  // indicate reserved timeslots
+   var flags=""
+
+   if ( jsVer=="1.1" ) {
+      var numImages=parent.numRows*7;
+      var holdCourse="";
+      for (var y=0; y<numImages; y++){
+         if (parent.waci211b.document.images[y].src.lastIndexOf("reserve.gif")>=0){
+            flags+="R";
+         }else{
+            flags+="o";
+         }
+      }
+   } else {                    // MSIE 3 VERSION
+      var lastRow=parent.numRows+1;
+      for (y=1; y<lastRow; y++){
+         var startColumn=(y*8)+1;
+         var endColumn=startColumn+6;
+         for (var i=startColumn; i<=endColumn; i++){
+            if (parent.waci211b.document.reserve.elements[i].value=="Reserve"){
+               flags+="R";
+            }else{
+               flags+="o";
+            }
+         }
+      }
+   }
+
+   flags+="z";
+   top.reserveFlags=flags;
+   document.select.timeFlag.value=flags;
+   for (var j=4; j<=12; j++) {
+      holdCourse = ""+document.select.elements[j].value;
+      document.select.elements[j].value = holdCourse.toUpperCase();
+   }
+}
+
+/**********************************************************************
+*                                                                     *
+*  Function    - validateCourseID                                     *
+*  Parameters  - validString                                          *
+*  Description - This function checks if the argument string is a     *
+*                valid course id, and displays an alert dialog if not.*
+*  Called By   - onChange event handler                               *
+*                                                                     *
+**********************************************************************/
+function validateCourseID(validString,fieldName) {
+
+   //  This variable is true if the string contains all valid characters,
+   //  and false otherwise.
+  
+      if (fieldName=='c001'){document.select.c001.value = validString.toUpperCase();}
+      if (fieldName=='c002'){document.select.c002.value = validString.toUpperCase();}
+      if (fieldName=='c003'){document.select.c003.value = validString.toUpperCase();}
+      if (fieldName=='c004'){document.select.c004.value = validString.toUpperCase();}
+      if (fieldName=='c005'){document.select.c005.value = validString.toUpperCase();}
+    }
+
+
+
+function coursePick(courseId){           //A course id link was clicked on the course list
+                                         //Add the course id to the students course selections
+   var courseCleared=false;
+
+   for (var i=4; i<=11; i++) {            //if course previously selected - clear
+        if (document.select.elements[i].value==courseId) {
+             document.select.elements[i].value="";
+             courseCleared=true;
+             break;
+         }
+    }
+
+   if (!courseCleared){                   // add course to list if there an avaiable space
+      for (var i=4; i<=11; i++) {
+         if (document.select.elements[i].value=="") {
+            document.select.elements[i].value=courseId;
+            break;
+         }
+      }
+   }
+}
+
+         </script>
+         
+<link href="./styles.css" type="text/css" rel="stylesheet">
+<link href="./wts.css" rel="stylesheet" type="text/css">
+</head>
+<body class="typeD">
+
+
+
+<form method="POST" action="https://webapps.lwtech.edu/scripts/rqservnt.exe" name="select" target="_parent">
+<h3>Instructions</h3>
+<!--<ol class="schedulePlannerInputInstructions">
+ --><p><strong>1) </strong>Use the  Time Grid  to reserve days or times. </p>
+	<p><strong>2) </strong>Enter desired courses below (<em>such as ENGL&amp;101 or TRAN&nbsp;110</em>). View all courses with the "View Course List" button.
+
+    <input type="hidden" name="request" value="crsschd">
+    <input type="hidden" name="sid" value="*">
+    <input type="hidden" name="yrq" value="*">
+    <input type="hidden" name="loc" value="*">
+    
+    <table border="0" cellspacing="2" cellpadding="0">
+      <tbody><tr>
+        <td><input size="10" maxlength="9" name="c001" onchange="validateCourseID(this.value,this.name)"></td>
+      </tr>
+      <tr>
+        <td><input size="10" maxlength="9" name="c002" onchange="validateCourseID(this.value,this.name)"></td>
+      	</tr>
+      <tr>
+        <td><input size="10" maxlength="9" name="c003" onchange="validateCourseID(this.value,this.name)"></td>
+      	</tr>
+      <tr>
+        <td><input size="10" maxlength="9" name="c004" onchange="validateCourseID(this.value,this.name)"></td>
+      	</tr>
+      <tr>
+        <td><input size="10" maxlength="9" name="c005" onchange="validateCourseID(this.value,this.name)"></td>
+      	</tr>
+      <input name="c006" type="hidden" value="">
+      <input name="c007" type="hidden" value="">
+      <input name="c008" type="hidden" value="">
+      <input name="c009" type="hidden" value="">
+    </tbody></table>
+    <input type="hidden" name="timeFlag" value="">
+</p>
+
+<script>
+if (parent.reqcheck=="Y"){
+  document.write("<p><INPUT Type=checkbox Name=preReq onClick='(checked)?getSID() : resetSID()'>Check for prerequisites</p>");
+ }
+</script><p><input type="checkbox" name="preReq" onclick="(checked)?getSID() : resetSID()">Check for prerequisites</p>
+	<p><strong>3) </strong> To continue, click the Submit Selections button below. <br><br>
+	  <a href="javascript:submitCourses()"><img src="./submit.gif" border="0"></a> 
+    <a href="javascript:document.select.reset()"><img src="./clear.gif" border="0"></a> 
+    <script> resetSID(); </script>
+</p>
+
+
+
+</form>
+
+  <hr width="70%" align="left">
+<h3>Notes:</h3>
+  <p><strong>New Course Names<br>
+  </strong><em>Recently changes were made to the names and/or ID numbers for many popular General Ed classes. For example, <strong>PSYC 101</strong> is now <strong>PSYC&amp;100</strong>. Check our <a href="http://www.lwtech.edu/academics/class-schedule" target="_blank">New Course Names</a> page for all the changes.</em> </p>
+  <p><strong>Class full?<br>
+  </strong><em>To put yourself on a waitlist, find the item number of the <a href="http://www.lwtech.edu/academics/class-schedule" target="_top">class here</a> then <a href="https://webapps.lwtech.edu/wts/webreg/waci221.html" target="_top">register for the class</a>. You will 
+    be provided an option to put yourself on a waitlist.</em></p>
+  <p>&nbsp;</p>
+
+
+
+
+
+
+</body></html>
