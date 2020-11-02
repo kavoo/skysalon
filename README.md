@@ -29,4 +29,17 @@
 #   https://dcc.godaddy.com/manage/skysalon.in/dns
 #       Configure GoDaddy to point to Azure
 
-# https://marketplace.visualstudio.com/items?itemName=shyykoserhiy.git-autoconfig
+# Setup Application Insights: https://docs.microsoft.com/en-us/azure/azure-monitor/app/nodejs
+
+# Basic VSCODe extention to setup git account for checkin to githug was using MS account, had to switch vscode workspace to inner/repo folder and setup in .git/config file or using extension https://marketplace.visualstudio.com/items?itemName=shyykoserhiy.git-autoconfig
+# Kudu debugging the site: https://skysalon.scm.azurewebsites.net/
+#       App Service Online Editor: https://skysalon.scm.azurewebsites.net/dev/wwwroot/package.json
+# Custom DomainName: https://docs.microsoft.com/en-us/azure/app-service/manage-custom-dns-buy-domain
+# Securing the site, handling certificates
+#   Add Certificate: https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-certificate#create-a-free-certificate-preview
+#   Secure CustomName/TLS binding: https://docs.microsoft.com/en-us/azure/app-service/configure-ssl-bindings#create-binding
+#   Free Resource List: https://azure.microsoft.com/en-us/free/#12-months-free
+
+
+# Deployment History: https://portal.azure.com/#@6ac90cf0-4613-4fa5-a2b5-89248502d821/resource/subscriptions/f51ff3bd-cac4-4316-ac74-a113fe48fb03/resourcegroups/SkySalonRG/providers/Microsoft.Web/sites/skysalon/vstscd
+# Staging: https://skysalon-stage.azurewebsites.net/

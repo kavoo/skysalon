@@ -1,6 +1,8 @@
 var express = require('express')
 var app = express()
 var path = require('path'); 
+let appInsights = require('applicationinsights');
+appInsights.setup().start();
 
 //response.end('Hello World\n');
 app.use( express.static(path.join(__dirname + '/SkySalon')) );
