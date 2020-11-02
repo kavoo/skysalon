@@ -1,3 +1,6 @@
+# ####################
+# SETUP DEV ENVIRONMENT
+# ####################
 # skysalon
 # setup dev env
 #   install vscode, git, git extension in vscode, node.js
@@ -9,8 +12,9 @@
 # npm start command will run the node app
 # open browser with https://localhost:8080 to check if the site is accessible
 
-
+# #######################
 # How to deploy the project on Azure?
+# #######################
 # https://docs.microsoft.com/en-us/azure/developer/javascript/tutorial-vscode-azure-app-service-node-01?tabs=bash
 #       Other deploy methods: https://code.visualstudio.com/docs/azure/deployment
 
@@ -31,6 +35,9 @@
 
 # Setup Application Insights: https://docs.microsoft.com/en-us/azure/azure-monitor/app/nodejs
 
+# #################
+# REFERENCES
+# #################
 # Basic VSCODe extention to setup git account for checkin to githug was using MS account, had to switch vscode workspace to inner/repo folder and setup in .git/config file or using extension https://marketplace.visualstudio.com/items?itemName=shyykoserhiy.git-autoconfig
 # Kudu debugging the site: https://skysalon.scm.azurewebsites.net/
 #       App Service Online Editor: https://skysalon.scm.azurewebsites.net/dev/wwwroot/package.json
