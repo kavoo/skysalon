@@ -31,5 +31,5 @@ jobs:
       with:
         app-name: 'skysalon'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_730f53bbbc4b403abb72ce54facd34d7 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ed4097ec16aa41919046146273f861a2 }}
         package: .
