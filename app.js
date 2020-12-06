@@ -1,11 +1,25 @@
 var express = require('express')
 var app = express()
 var path = require('path'); 
-let appInsights = require('applicationinsights');
-appInsights.setup().start();
 
+// Objective #1: Use Azure App Insights to track the usage of the website
+// https://docs.microsoft.com/en-us/azure/azure-monitor/app/nodejs
+let appikey = 'InstrumentationKey=6e875c5a-3182-4b4e-bcbf-2716caafe6fe;IngestionEndpoint=https://westus2-0.in.applicationinsights.azure.com/';
+let appInsights = require('applicationinsights');
+appInsights.setup(appikey)
+  .setAutoDependencyCorrelation(true)
+  .setAutoCollectRequests(true)
+  .setAutoCollectPerformance(true, true)
+  .setAutoCollectExceptions(true)
+  .setAutoCollectDependencies(true)
+  .setAutoCollectConsole(true)
+  .setUseDiskRetryCaching(true)
+  .setSendLiveMetrics(true)
+  .setDistributedTracingMode(appInsights.DistributedTracingModes.AI)  
+  .start();
+// debugger;
 //response.end('Hello World\n');
-app.use( express.static(path.join(__dirname + '/SkySalon')) );
+app.use( express.static(path.join(__dirname )) );
 console.log(__dirname);
 
 app.get('/', function(req, res) {
@@ -19,6 +33,16 @@ app.listen(port);
 console.log('Starting on port:' + port);
 app.on('error', onError);
 app.on('listening', onListening);
+
+// https://www.npmjs.com/package/applicationinsights
+// https://docs.microsoft.com/en-us/azure/azure-monitor/app/nodejs#live-metrics
+// let client = appInsights.defaultClient;
+// client.trackEvent({name: "my custom event", properties: {customProperty: "custom property value"}});
+// client.trackException({exception: new Error("handled exceptions can be logged with this method")});
+// client.trackMetric({name: "custom metric", value: 3});
+// client.trackTrace({message: "trace message"});
+// client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL"});
+// client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true});
 
 
 /**

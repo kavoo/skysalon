@@ -50,3 +50,9 @@
 
 # Deployment History: https://portal.azure.com/#@6ac90cf0-4613-4fa5-a2b5-89248502d821/resource/subscriptions/f51ff3bd-cac4-4316-ac74-a113fe48fb03/resourcegroups/SkySalonRG/providers/Microsoft.Web/sites/skysalon/vstscd
 # Staging: https://skysalon-stage.azurewebsites.net/
+
+# Learnings
+# use Launch Chrome to debug client side
+# use Launch Node to debug server side
+# use debugger or breakpoint to pause the code
+# link to dev instance of appinsights: https://portal.azure.com/#@6ac90cf0-4613-4fa5-a2b5-89248502d821/resource/subscriptions/f51ff3bd-cac4-4316-ac74-a113fe48fb03/resourcegroups/SkySalonRG/providers/microsoft.insights/components/skysalondev/logs
